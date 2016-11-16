@@ -1,8 +1,7 @@
-<!DOCTYPE web-app PUBLIC
-        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
-        "http://java.sun.com/dtd/web-app_2_3.dtd" >
-
-<web-app>
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
     <display-name>Archetype Created Web Application</display-name>
 
@@ -10,7 +9,35 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
+    <!--FlowersController-->
+    <servlet>
+        <servlet-name>FlowersController</servlet-name>
+        <servlet-class>com.malex.controller.FlowersController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FlowersController</servlet-name>
+        <url-pattern>/flowers</url-pattern>
+    </servlet-mapping>
 
+    <!--ShoppingСartController-->
+    <servlet>
+        <servlet-name>ShoppingСartController</servlet-name>
+        <servlet-class>com.malex.controller.ShoppingСartController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ShoppingСartController</servlet-name>
+        <url-pattern>/my_cart</url-pattern>
+    </servlet-mapping>
+
+    <!-- LoginController  -->
+    <servlet>
+        <servlet-name>LoginController</servlet-name>
+        <servlet-class>com.malex.controller.LoginController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginController</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
 
 </web-app>
 

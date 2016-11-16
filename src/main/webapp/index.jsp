@@ -10,7 +10,17 @@
 <jsp:include page="jsp/navbar.jsp" flush="true"/>
 <jsp:include page="jsp/header.jsp" flush="true"/>
 
-<jsp:include page="jsp/login/login.jsp" flush="true"/>
+<c:choose>
+    <c:when test="${flag eq 'login' || flag eq 'flowers'}">
+        <jsp:include page="jsp/flowers/flowers.jsp" flush="true"/>
+    </c:when>
+    <c:when test="${flag eq 'my_cart'}">
+        <jsp:include page="jsp/my_catr/my_cart.jsp" flush="true"/>
+    </c:when>
+    <c:otherwise>
+        <jsp:include page="jsp/login/login.jsp" flush="true"/>
+    </c:otherwise>
+</c:choose>
 
 <jsp:include page="jsp/footer_js.jsp" flush="true"/>
 <jsp:include page="jsp/footer.jsp" flush="true"/>

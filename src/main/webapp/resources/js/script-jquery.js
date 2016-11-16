@@ -79,6 +79,65 @@ $(document).ready(function () {
         $(function () {
             $("[data-toggle='tooltip']").tooltip();
         });
+
+        // >>>> Logout by the time if cookie 'Logout' eq true <<<<<<
+        // https://github.com/maxfierke/jquery-sessionTimeout-bootstrap?__hstc=214758600.2dfd39bfa77e913256144dc32952dc8e.1479158118722.1479158118722.1479158118722.1&__hssc=214758600.1.1479158118722&__hsfp=3677484651
+
+
+        var checkCookies = function () {
+            var valueCookie = $.cookie("Login");
+            if (valueCookie) {
+                console.log(">> Login " + valueCookie);
+                return true;
+            } else {
+                console.log("<<< Login || undefined : " + valueCookie);
+                return false;
+            }
+        };
+
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~```````````````````````````````````````````````````
+        var idleTimer = null;
+        var idleState = false; // состояние отсутствия
+        var idleWait = 3000; // время ожидания в мс. (1/1000 секунды)
+
+        $(function () {
+
+            $(document).bind('mousemove keydown scroll', function () {
+
+                // проверка Cookies
+                var isLogin = checkCookies();
+
+                if (isLogin) {
+
+                    // отменяем прежний временной отрезок
+                    clearTimeout(idleTimer);
+
+                    if (idleState == true) {
+
+                        // Действия на возвращение пользователя
+                        console.log("С возвращением!");
+
+                    }
+
+                    idleState = false;
+
+                    idleTimer = setTimeout(function () {
+
+
+                        // Действия на отсутствие пользователя
+                        console.log("Вы отсутствовали более чем " + idleWait / 1000 + " секунд.");
+
+
+
+                        idleState = true;
+                    }, idleWait);
+
+                }
+            });
+
+            $("body").trigger("mousemove"); // сгенерируем ложное событие, для запуска скрипта
+        });
+
     }
 );
 
